@@ -2,15 +2,16 @@ body
 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 8px;
 }
 
 
 .text-output
 {
-    width: 120px;
-    margin: auto;
     font-weight: bold;
+    background-color: aqua;
 }
 
 
@@ -20,11 +21,11 @@ body
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
-    margin: auto;
 }
 
 
 .number-button
 {
     flex-basis: 30%;
+    font-weight: bold;
 }

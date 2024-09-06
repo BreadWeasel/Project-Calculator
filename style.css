@@ -1,0 +1,30 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.text-output
+{
+    width: 120px;
+    margin: auto;
+    font-weight: bold;
+}
+
+
+.buttons
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+
+.number-button
+{
+    flex-basis: 30%;
+}

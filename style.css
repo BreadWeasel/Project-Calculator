@@ -5,13 +5,22 @@ body
     justify-content: center;
     align-items: center;
     gap: 8px;
+    background-color: cornsilk;
 }
 
 
+.calculator-screen
+{
+    border: 5px solid black;
+}
+
 .text-output
 {
-    font-weight: bold;
-    background-color: aqua;
+    font-weight: bolder;
+    background-color: rgb(158, 193, 161);
+    color: black;
+    font-size: 30px;
+
 }
 
 
@@ -19,13 +28,41 @@ body
 {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
+}
+
+
+.clear-button, .sign-button, .percentage-button
+{
+    flex-basis: 25%;
+    background-color: rgb(87, 87, 255);
+}
+
+
+.operator-button
+{
+    flex-basis: 25%;
+    background-color: rgb(196, 127, 0);
 }
 
 
 .number-button
 {
-    flex-basis: 30%;
+    flex-basis: 25%;
     font-weight: bold;
+    background-color: darkgray;
+}
+
+
+#zero-button
+{
+    flex-basis: 50%;
+}
+
+.decimal-button
+{
+    flex-basis: 25%;
+    font-weight: bolder;
+    background-color: darkgray;
 }

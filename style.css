@@ -22,6 +22,8 @@ body
     color: black;
     font-size: 30px;
     border: 5px solid grey;
+    flex: 1 1 auto;
+    margin-left: auto;
 }
 
 
@@ -41,7 +43,7 @@ body
 }
 
 
-.operator-button
+.operator-button, .evaluate-button
 {
     flex-basis: 25%;
     background-color: rgb(196, 127, 0);

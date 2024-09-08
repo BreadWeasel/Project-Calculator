@@ -3,8 +3,8 @@ const operatorButtons = document.querySelectorAll(".operator-button");
 const calculatorOutput = document.querySelector(".text-output");
 
 
-let numberA = null;
-let numberB = null;
+let numberA = 0;
+let numberB = 0;
 let selectedOperator = null;
 let operatorSelected = false;
 
@@ -39,22 +39,22 @@ function operate(operator, a, b)
     {
         case "+":
             numberA = add(a, b);
-            numberB = null;
+            numberB = 0;
             calculatorOutput.textContent = numberA;
             return add(a, b);
         case "-":
             numberA = subtract(a, b);
-            numberB = null;
+            numberB = 0;
             calculatorOutput.textContent = numberA;
             return subtract(a, b);
         case "*":
             numberA = multiply(a, b);
-            numberB = null;
+            numberB = 0;
             calculatorOutput.textContent = numberA;
             return multiply(a, b);
         case "/":
             numberA = divide(a, b);
-            numberB = null;
+            numberB = 0;
             calculatorOutput.textContent = numberA;
             return divide(a, b);
         default:
@@ -69,7 +69,7 @@ function getNumber(numberString)
     console.log("Button pressed is: " + numberString)
     if (!operatorSelected)
     {
-        if (numberA != null)
+        if (numberA != 0)
         {
             numberA += numberString;
         }
@@ -83,7 +83,7 @@ function getNumber(numberString)
     }
     else
     {
-        if (numberB != null)
+        if (numberB != 0)
         {
             numberB += numberString;
         }
@@ -113,9 +113,9 @@ function getOperator(operator)
 
 function clearCalculator()
 {
-    numberA = null;
-    numberB = null;
-    calculatorOutput.textContent = "Numbers Here";
+    numberA = 0;
+    numberB = 0;
+    calculatorOutput.textContent = "0";
     operatorSelected = false;
     console.log("Calculator Cleared")
 }
@@ -144,6 +144,10 @@ function setUpOperations()
     operatorButtons.forEach((operatorButton) => {
         operatorButton.addEventListener("click", () =>
         {
+            if (selectedOperator != null)
+            {
+                operate(selectedOperator, numberA, numberB);
+            }
             getOperator(operatorButton.textContent);
         });
     });
@@ -165,3 +169,5 @@ setUpClear();
 setUpOperations();
 setUpEval();
 
+// TO-DO:
+// Set up +/- button, % button, divide by 0 error, and decimal clamping

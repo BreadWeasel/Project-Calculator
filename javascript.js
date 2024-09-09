@@ -2,12 +2,12 @@ const numberButtons = document.querySelectorAll(".number-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const calculatorOutput = document.querySelector(".text-output");
 
-
 let numberA = 0;
 let numberB = 0;
 let selectedOperator = null;
 let operatorSelected = false;
 let operationFinished = false;
+
 
 function add(a, b)
 {
@@ -158,6 +158,7 @@ function getNumber(numberString)
     }
 }
 
+
 // Selects operator for later use in operate function
 function getOperator(operator)
 {
@@ -170,6 +171,7 @@ function getOperator(operator)
     
     return operator;
 }
+
 
 // Resets all calculator data
 function clearCalculator()
@@ -218,6 +220,7 @@ function setUpOperations()
         });
     });
 }
+
 
 // Sets up = button to display result of operation
 function setUpEval()

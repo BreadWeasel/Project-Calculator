@@ -70,10 +70,13 @@ function operate(operator, a, b)
         case "/":
             numberA = divide(a, b).toFixed(2);
             numberB = 0;
-            calculatorOutput.textContent = numberA;
             resetOperation();
             console.log(divide(a, b))
-            return numberA;
+            if (numberA == "Infinity")
+            {
+                calculatorOutput.textContent = "No dividing by 0";
+            }
+            return null;
         default:
             console.log("Operation not returned");
             resetOperation();
@@ -194,7 +197,18 @@ function setUpEval()
 }
 
 
+function setUpDecimal()
+{
+    const decimalButton = document.querySelector(".decimal-button")
+    decimalButton.addEventListener("click", ()=>
+    {
+        getNumber(decimalButton.textContent);
+    });
+}
+
+
 setUpNumbers();
+setUpDecimal();
 setUpClear();
 setUpOperations();
 setUpEval();

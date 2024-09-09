@@ -22,8 +22,12 @@ body
     color: black;
     font-size: 30px;
     border: 5px solid grey;
-    flex: 1 1 auto;
-    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: right;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
 }
 
 

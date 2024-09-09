@@ -76,7 +76,11 @@ function operate(operator, a, b)
             {
                 calculatorOutput.textContent = "No dividing by 0";
             }
-            return null;
+            else
+            {
+                calculatorOutput.textContent = numberA;
+            }
+            return numberA;
         default:
             console.log("Operation not returned");
             resetOperation();
@@ -88,9 +92,21 @@ function operate(operator, a, b)
 function getNumber(numberString)
 {
     //console.log("Button pressed is: " + numberString)
+   
     if (!operatorSelected)
     {
-        if (numberA != 0 && operationFinished == false)
+        if (numberString == "+/-" || numberString == "%")
+        {
+            if (numberString == "+/-")
+            {
+                numberA = String(Number(numberA) * (-1));
+            }
+            else if (numberString == "%")
+            {
+                numberA = String(Number(numberA) * (.01));
+            }
+        }
+        else if (numberA != 0 && operationFinished == false)
         {
             numberA += numberString;
         }
@@ -105,11 +121,21 @@ function getNumber(numberString)
         }
         console.log("number A is: " + numberA)
         calculatorOutput.textContent = numberA;
-        return numberString;
     }
     else
     {
-        if (numberB != 0 && operationFinished == false)
+        if (numberString == "+/-" || numberString == "%")
+        {
+            if (numberString == "+/-")
+            {
+                numberB = String(Number(numberB) * (-1));
+            }
+            else if (numberString == "%")
+            {
+                numberB = String(Number(numberB) * (.01));
+            }
+        }    
+        else if (numberB != 0 && operationFinished == false)
         {
             numberB += numberString;
         }
@@ -122,6 +148,7 @@ function getNumber(numberString)
         {
             numberB = numberString
         }
+
         console.log("number B is: " + numberB)
         calculatorOutput.textContent = numberB;
         return numberString;
@@ -213,10 +240,10 @@ function setUpDecimal()
 // Sets up +/ button
 function setUpSign()
 {
-    const decimalButton = document.querySelector(".decimal-button")
-    decimalButton.addEventListener("click", ()=>
+    const signButton = document.querySelector(".sign-button")
+    signButton.addEventListener("click", ()=>
     {
-        getNumber(decimalButton.textContent);
+        getNumber(signButton.textContent);
     });
 }
 
@@ -224,18 +251,17 @@ function setUpSign()
 // Sets up % button
 function setUpPercent()
 {
-    const decimalButton = document.querySelector(".decimal-button")
-    decimalButton.addEventListener("click", ()=>
+    const percentButton = document.querySelector(".percent-button")
+    percentButton.addEventListener("click", ()=>
     {
-        getNumber(decimalButton.textContent);
+        getNumber(percentButton.textContent);
     });
 }
 
 setUpNumbers();
 setUpDecimal();
+setUpSign();
+setUpPercent();
 setUpClear();
 setUpOperations();
 setUpEval();
-
-// TO-DO:
-// Set up +/- button, % button

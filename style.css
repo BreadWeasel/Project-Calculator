@@ -38,7 +38,7 @@ body
 }
 
 
-.clear-button, .sign-button, .percentage-button
+.clear-button, .sign-button, .percent-button
 {
     flex-basis: 25%;
     background-color: rgb(87, 87, 255);

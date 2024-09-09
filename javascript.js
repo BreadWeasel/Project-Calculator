@@ -154,6 +154,7 @@ function clearCalculator()
 }
 
 
+// Sets up number buttons 0-9
 function setUpNumbers()
 {
     numberButtons.forEach((numberButton) => {
@@ -164,7 +165,7 @@ function setUpNumbers()
     });
 }
 
-
+// Sets up AC button
 function setUpClear()
 {
     const clearButton = document.querySelector(".clear-button");
@@ -172,6 +173,7 @@ function setUpClear()
 }
 
 
+// Sets up operation buttons (+ - * /)
 function setUpOperations()
 {
     operatorButtons.forEach((operatorButton) => {
@@ -186,7 +188,7 @@ function setUpOperations()
     });
 }
 
-
+// Sets up = button to display result of operation
 function setUpEval()
 {
     const evalButton = document.querySelector(".evaluate-button");
@@ -197,6 +199,7 @@ function setUpEval()
 }
 
 
+// Sets up . button
 function setUpDecimal()
 {
     const decimalButton = document.querySelector(".decimal-button")
@@ -207,6 +210,27 @@ function setUpDecimal()
 }
 
 
+// Sets up +/ button
+function setUpSign()
+{
+    const decimalButton = document.querySelector(".decimal-button")
+    decimalButton.addEventListener("click", ()=>
+    {
+        getNumber(decimalButton.textContent);
+    });
+}
+
+
+// Sets up % button
+function setUpPercent()
+{
+    const decimalButton = document.querySelector(".decimal-button")
+    decimalButton.addEventListener("click", ()=>
+    {
+        getNumber(decimalButton.textContent);
+    });
+}
+
 setUpNumbers();
 setUpDecimal();
 setUpClear();
@@ -214,4 +238,4 @@ setUpOperations();
 setUpEval();
 
 // TO-DO:
-// Set up +/- button, % button, divide by 0 error
+// Set up +/- button, % button

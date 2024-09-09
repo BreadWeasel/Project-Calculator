@@ -7,6 +7,7 @@ let numberA = 0;
 let numberB = 0;
 let selectedOperator = null;
 let operatorSelected = false;
+let operationFinished = false;
 
 function add(a, b)
 {
@@ -32,33 +33,50 @@ function divide(a, b)
 }
 
 
+function resetOperation()
+{
+    selectedOperator = null;
+    operatorSelected = false;
+    operationFinished = true;
+}
+
+
 function operate(operator, a, b)
 {
     // Perform operation
     switch(operator)
     {
         case "+":
-            numberA = add(a, b);
+            numberA = add(a, b).toFixed(2);
             numberB = 0;
             calculatorOutput.textContent = numberA;
-            return add(a, b);
+            resetOperation();
+            console.log(add(a, b))
+            return numberA;
         case "-":
-            numberA = subtract(a, b);
+            numberA = subtract(a, b).toFixed(2);
             numberB = 0;
             calculatorOutput.textContent = numberA;
-            return subtract(a, b);
+            resetOperation();
+            console.log(subtract(a, b))
+            return numberA;
         case "*":
-            numberA = multiply(a, b);
+            numberA = multiply(a, b).toFixed(2);
             numberB = 0;
             calculatorOutput.textContent = numberA;
-            return multiply(a, b);
+            resetOperation();
+            console.log(multiply(a, b))
+            return numberA;
         case "/":
-            numberA = divide(a, b);
+            numberA = divide(a, b).toFixed(2);
             numberB = 0;
             calculatorOutput.textContent = numberA;
-            return divide(a, b);
+            resetOperation();
+            console.log(divide(a, b))
+            return numberA;
         default:
             console.log("Operation not returned");
+            resetOperation();
             return null;
     }    
 }
@@ -66,32 +84,42 @@ function operate(operator, a, b)
 
 function getNumber(numberString)
 {
-    console.log("Button pressed is: " + numberString)
+    //console.log("Button pressed is: " + numberString)
     if (!operatorSelected)
     {
-        if (numberA != 0)
+        if (numberA != 0 && operationFinished == false)
         {
             numberA += numberString;
+        }
+        else if (numberA != 0 && operationFinished == true)
+        {
+            numberA = numberString;
+            operationFinished = false;
         }
         else
         {
             numberA = numberString
         }
-        console.log(numberA)
+        console.log("number A is: " + numberA)
         calculatorOutput.textContent = numberA;
         return numberString;
     }
     else
     {
-        if (numberB != 0)
+        if (numberB != 0 && operationFinished == false)
         {
             numberB += numberString;
+        }
+        else if (numberB != 0 && operationFinished == true)
+        {
+            numberB = numberString;
+            operationFinished = false;
         }
         else
         {
             numberB = numberString
         }
-        console.log(numberB)
+        console.log("number B is: " + numberB)
         calculatorOutput.textContent = numberB;
         return numberString;
     }
@@ -116,7 +144,9 @@ function clearCalculator()
     numberA = 0;
     numberB = 0;
     calculatorOutput.textContent = "0";
+    selectedOperator = null;
     operatorSelected = false;
+    operationFinished = false;
     console.log("Calculator Cleared")
 }
 
@@ -170,4 +200,4 @@ setUpOperations();
 setUpEval();
 
 // TO-DO:
-// Set up +/- button, % button, divide by 0 error, and decimal clamping
+// Set up +/- button, % button, divide by 0 error

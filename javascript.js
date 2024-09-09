@@ -33,6 +33,7 @@ function divide(a, b)
 }
 
 
+// Reset operation data
 function resetOperation()
 {
     selectedOperator = null;
@@ -41,6 +42,7 @@ function resetOperation()
 }
 
 
+// Perform and display operation. Requires two numbers and an operator.
 function operate(operator, a, b)
 {
     // Perform operation
@@ -70,8 +72,6 @@ function operate(operator, a, b)
         case "/":
             numberA = divide(a, b).toFixed(2);
             numberB = 0;
-            resetOperation();
-            console.log(divide(a, b))
             if (numberA == "Infinity")
             {
                 calculatorOutput.textContent = "No dividing by 0";
@@ -80,6 +80,8 @@ function operate(operator, a, b)
             {
                 calculatorOutput.textContent = numberA;
             }
+            resetOperation();
+            console.log(divide(a, b))
             return numberA;
         default:
             console.log("Operation not returned");
@@ -89,6 +91,7 @@ function operate(operator, a, b)
 }
 
 
+// Store and displays selected numbers and its alterations (sign change and percent buttons)
 function getNumber(numberString)
 {
     //console.log("Button pressed is: " + numberString)
@@ -118,6 +121,7 @@ function getNumber(numberString)
         else
         {
             numberA = numberString
+            operationFinished = false;
         }
         console.log("number A is: " + numberA)
         calculatorOutput.textContent = numberA;
@@ -147,15 +151,14 @@ function getNumber(numberString)
         else
         {
             numberB = numberString
+            operationFinished = false;
         }
-
         console.log("number B is: " + numberB)
         calculatorOutput.textContent = numberB;
-        return numberString;
     }
 }
 
-
+// Selects operator for later use in operate function
 function getOperator(operator)
 {
     if (operator != null && operator != "")
@@ -168,7 +171,7 @@ function getOperator(operator)
     return operator;
 }
 
-
+// Resets all calculator data
 function clearCalculator()
 {
     numberA = 0;
@@ -191,6 +194,7 @@ function setUpNumbers()
         });
     });
 }
+
 
 // Sets up AC button
 function setUpClear()
@@ -258,10 +262,17 @@ function setUpPercent()
     });
 }
 
-setUpNumbers();
-setUpDecimal();
-setUpSign();
-setUpPercent();
-setUpClear();
-setUpOperations();
-setUpEval();
+
+// Sets up all event listeners in calculator program
+function setUpCalculator()
+{
+    setUpNumbers();
+    setUpDecimal();
+    setUpSign();
+    setUpPercent();
+    setUpClear();
+    setUpOperations();
+    setUpEval();
+}
+
+setUpCalculator();
